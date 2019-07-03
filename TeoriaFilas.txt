@@ -1,0 +1,61 @@
+Definição: Fila é uma lista dinâmica onde os elementos
+podem ser removidos e inseridos, mas que possui regras de 
+funcionamento.
+
+REGRAS:
+-Uma remoção sempre remove o elemento do início da sequência.
+-Uma inserção sempre insere o elemento no fim da sequência.
+
+FIFO(first in fist out)- o primeiro a entrar é o primeiro a sair.
+
+-Convenções:
+    Um inteiro fim indica o final da lista.
+    que é 1 a mais que a posição do utimo elemento.
+    ou seja: fim é a posição em que o próximo elemento será inserido.
+
+    Um inteiro INI, indica o início da Fila, sendo essa 
+    a posição do primeiro elemento.
+
+
+OPERAÇÕES:
+
+Insert:
+**Verificação se a fila está cheia.
+fila[fim++] = x;
+
+Remove:
+**Verificar se a fila não está vazia. (ini = fim)
+x = q[ini++] , remove elemento e armazena elemento removido em x.
+
+estas OPERAÇÕES levam tempo constante O(1).
+
+IMPLEMENTAÇÃO CIRCULAR DE FILA EM VETOR:
+
+-VANTAGENS:
+    PODE AJUDAR A ADIAR O "TRANSBORDAMENTO" DA FILA.
+
+
+Na implementação circular a fila está no subvetor v[ini..fim-1]
+
+ou na concatenação do subvetor v[ini..n-1] com v[0..fim-1]
+**(fica mais claro com uma imagem).
+
+A ideia é que fim e o inicio do vetor sejam "colados", se representasse
+uma estrutura cicular em forma de vetor.(vide imagem);
+
+OPERAÇÕES:
+- Para inserir um elemento implementação circular:
+    if(fim == TAM) fim = 0;
+
+- Para remover um elemento e armazená-l em x:
+    if(ini == TAM) ini = 0;
+
+-Para fila vazia:
+    ini == fim;
+
+-Para fila cheia:
+    fim + 1 == ini || (fim + 1 == n && ini == 0)
+
+-Tamanho:
+    if(fim >=ini) tam = fim - ini
+    if(fim < ini) tam = (TAM - ini) + (fim-0)
